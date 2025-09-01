@@ -1,0 +1,24 @@
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\keyboard backlight ambient.exe
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\legion_rgb_driver.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\keyboard backlight ambient.deps.json
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\keyboard backlight ambient.runtimeconfig.json
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\keyboard backlight ambient.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\keyboard backlight ambient.pdb
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\Microsoft.Win32.SystemEvents.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\System.Drawing.Common.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\System.Private.Windows.Core.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\bin\x64\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.csproj.AssemblyReference.cache
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.AssemblyInfoInputs.cache
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.AssemblyInfo.cs
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.csproj.CoreCompileInputs.cache
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.sourcelink.json
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard.AE57E9AD.Up2Date
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\refint\keyboard backlight ambient.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.pdb
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.genruntimeconfig.cache
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\ref\keyboard backlight ambient.dll
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\SessionWatcher.resources
+D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\x64\Debug\net8.0-windows\keyboard backlight ambient.csproj.GenerateResource.cache

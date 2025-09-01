@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36327.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keyboard backlight ambient", "keyboard backlight ambient\keyboard backlight ambient.csproj", "{D139A26D-0ED7-4EE7-913C-482F5E073A10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Debug|x64.ActiveCfg = Debug|x64
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Debug|x64.Build.0 = Debug|x64
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Release|x64.ActiveCfg = Release|x64
+		{D139A26D-0ED7-4EE7-913C-482F5E073A10}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9D89B8E-7E59-471E-989C-63820C060701}
+	EndGlobalSection
+EndGlobal
