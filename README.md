@@ -28,3 +28,7 @@ _\*\*The current implementation of capturing the screen doesn't allow update rat
 
 ---
 **Code for controlling the backlight is from [4JX/L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB)** /driver/src directory. Compiled into a DLL for an easy acces from C#.
+
+---
+### Current appearance:
+<img width="789" height="336" alt="lenovo kb ambient" src="https://github.com/user-attachments/assets/865fb08f-89eb-4ef1-83af-c9c8abae4800" />
