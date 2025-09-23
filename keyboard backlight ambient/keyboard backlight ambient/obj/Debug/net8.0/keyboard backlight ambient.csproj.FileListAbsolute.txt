@@ -1,4 +1,0 @@
-D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\Debug\net8.0\keyboard backlight ambient.GeneratedMSBuildEditorConfig.editorconfig
-D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\Debug\net8.0\keyboard backlight ambient.AssemblyInfoInputs.cache
-D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\Debug\net8.0\keyboard backlight ambient.AssemblyInfo.cs
-D:\Uzivatel\Admin\Dokumenty\GitHub\keyboard-backlight-ambient\keyboard backlight ambient\keyboard backlight ambient\obj\Debug\net8.0\keyboard backlight ambient.csproj.CoreCompileInputs.cache
