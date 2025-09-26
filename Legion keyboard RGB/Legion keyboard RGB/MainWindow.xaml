@@ -6,27 +6,31 @@
         xmlns:local="clr-namespace:Legion_keyboard_RGB"
         mc:Ignorable="d"
         
-        Title="MainWindow" Height="350" Width="300">
+        Title="MainWindow" Height="600" Width="350">
     
     <Grid Margin="10">        
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <Grid Grid.Row="0" VerticalAlignment="Top">
 
-            <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
-                <TextBlock Name="systemTimeText"  Text="Time: *time*" FontSize="16" />
-                <TextBlock  Text="|" FontSize="16" Margin="5,0,5,0"/>
-                <TextBlock Name="refreshRateText" Text="FPS: *fps* (*ms*)" FontSize="16" />
+            <StackPanel Orientation="Vertical">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical">
+                    <TextBlock Name="systemTimeText"  Text="Time: *time*" FontSize="16" FontWeight="Medium"/>
+                    <TextBlock Name="refreshRateText" Text="FPS: *fps* (*ms*)" FontSize="16" FontWeight="Medium"/>
+                </StackPanel>
+                <Separator/>
+                
+                <TextBlock Name="statusTextDisplay" Text="*staus" FontSize="16"/>
+
+                <Rectangle Fill="Black" Height="2" Margin="0,10,0,0"/>
             </StackPanel>
-
         </Grid>
 
-
-        <Grid Grid.Row="1" VerticalAlignment="Top">
+        <Grid Grid.Row="1" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -44,28 +48,38 @@
                 <TextBox   Name="saturationValueField" Text="*sat*"   Margin="2"/>
                 <TextBox   Name="lightnessValueField"  Text="*light*" Margin="2"/>
 
-                <TextBox Name="topMarginvalueField"    Text="*topMargin"    Margin="2"/>
-                <TextBox Name="bottomMarginvalueField" Text="*bottomMargin" Margin="2"/>
+                <TextBox Name="topMarginvalueField"    Text="*topMargin" Margin="2"/>
+                <TextBox Name="bottomMarginvalueField" Text="{Binding BoundText, UpdateSourceTrigger=LostFocus}" Margin="2"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" VerticalAlignment="Center">
             
             <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Rectangle Name="avgColour_1" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="avgColour_2" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="avgColour_3" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="avgColour_4" Width="64" Height="64" Fill="Black" />
-                </StackPanel>
+                <TextBlock Text="Raw colours" FontSize="16" FontWeight="Medium"/>
+                <Separator/>
 
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,5,0,0">
-                    <Rectangle Name="correctedColour_1" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="correctedColour_2" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="correctedColour_3" Width="64" Height="64" Fill="Black" />
-                    <Rectangle Name="correctedColour_4" Width="64" Height="64" Fill="Black"/>
-                </StackPanel>
+                <Border BorderBrush="Black" Background="Black" BorderThickness="1">
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Rectangle Name="avgColour_1" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_2" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_3" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_4" Width="64" Height="64" Fill="Black" Margin="1" />
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="With colour correction" FontSize="16" FontWeight="Medium" Margin="0,15,0,0"/>
+                <Separator/>
+
+                <Border BorderBrush="Black" Background="Black" BorderThickness="1">
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Rectangle Name="correctedColour_1" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_2" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_3" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_4" Width="64" Height="64" Fill="Black" Margin="1" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
                 
         </Grid>

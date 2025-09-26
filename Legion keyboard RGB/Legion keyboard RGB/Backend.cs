@@ -29,27 +29,59 @@ namespace Legion_keyboard_RGB
         private Graphics? scaledGraphics;
         private Rectangle screenBounds;
 
-        private System.Drawing.Size downscaleSize = new System.Drawing.Size(64, 30);
-        private int bottomMargin  = 40; // Taskbar height
-        private int topMargin = 30; // Titlebar height
+        private Color[] averageColours;
+        private Color[] correctedColours;
 
-        private float desiredFrametime = 50f;
+        private System.Drawing.Size downscaleSize = new System.Drawing.Size(64, 32);
+        private int bottomMargin  = 40; // Taskbar height
+        private int topMargin     = 30; // Titlebar height
+
+        private float desiredFrametime = 50;
         private float currentExecTime  = 0f;
 
-        private float loopFps = 0f;
+        private float currentFps = 0f;
         private float execTimeFPS = 0f;
         private float remainingTime = 0f;
 
         private float colCorr_saturatiomMultiplier = 1f;
         private float colCorr_lightnessMultiplier = 1f;
-        private bool appQuitting = false;
+        private float currentMs = 00f;
 
         public void Initialize(string[] args)
         {
-            //args = ["sat=2", "light=1,25", "logwarns", "fps=60"];
-
             CheckLaunchArguments(args);
             InitApp();
+
+            MainWindow.Instance.PropertyChanged += MainWindow_PropertyChanged;
+        }
+
+        private void MainWindow_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateValuesForUI();
+            MessageBox.Show(e.PropertyName, "test");
+        }
+
+        private void UpdateValuesForUI()
+        {
+            //MainWindow.Instance.UpdateUI(GetCurrentSystemTime(), (int)execTimeFPS, currentMs, averageColours, remainingTime, correctedColours,
+            //                                colCorr_saturatiomMultiplier, colCorr_lightnessMultiplier, topMargin, bottomMargin, (int)desiredFrametime);
+
+            MainWindow.Instance.UpdateUI(new MainWindow.UIValues
+            {
+                averageColours = averageColours,
+                correctedColours = correctedColours,
+
+                bottomMargin = bottomMargin,
+                topMargin = topMargin,
+                
+                currentFramerate = currentFps,
+                currentFrameTime = (1000 / currentFps), // 1 000ms 
+                currentTime = GetCurrentSystemTime(),
+                desiredFramerate = (1000 / desiredFrametime), // 1 000ms
+
+                lightnessMultiplier = colCorr_lightnessMultiplier,
+                saturationMultiplier = colCorr_saturatiomMultiplier,
+            });
         }
 
         internal async Task MainFunction()
@@ -73,8 +105,8 @@ namespace Legion_keyboard_RGB
                     }
                 }
 
-                Color[] averageColours = FastAverager.GetSliceAverages(scaledBitmap);
-                Color[] correctedColours = new Color[averageColours.Length];
+                averageColours = FastAverager.GetSliceAverages(scaledBitmap);
+                correctedColours = new Color[averageColours.Length];
 
                 for (int i = 0; i < averageColours.Length; i++)
                 {
@@ -83,78 +115,38 @@ namespace Legion_keyboard_RGB
 
                 BacklightDriver.SetBacklightColour(correctedColours[0], correctedColours[1], correctedColours[2], correctedColours[3]);
 
-#if DEBUG
-                // Debug stuff
-                CreateAvgColBitmap (averageColours);
-                CreateCorrColBitmap(correctedColours);
-#endif
-
                 execTimeStopwatch.Stop();
                 currentExecTime = execTimeStopwatch.ElapsedMilliseconds;
 
-                execTimeFPS = 1000 / currentExecTime;
+                execTimeFPS   = 1000 / currentExecTime;
                 remainingTime = desiredFrametime - currentExecTime;
-                loopFps = 1000 / (remainingTime + currentExecTime);
-                float currentMs = 1000f / execTimeFPS;
+                currentFps    = 1000 / (remainingTime + currentExecTime);
+                currentMs     = 1000f / execTimeFPS;
+
                 if (remainingTime < 0f)
                 {
-                    loopFps = 1000 / (remainingTime * -1 + currentExecTime);
+                    currentFps = 1000 / (remainingTime * -1 + currentExecTime);
                 }
 
-                MainWindow.Instance.UpdateStatus(GetCurrentSystemTime(), execTimeFPS, currentMs, averageColours, remainingTime, correctedColours, colCorr_saturatiomMultiplier, colCorr_lightnessMultiplier, topMargin, bottomMargin);
-
-
+                UpdateValuesForUI();
 
                 if (remainingTime < 0f && logWarnings == true)
                 {
                     MessageLogger.LogMessage($"[{GetCurrentSystemTime()}] Cannot keep up! Running {(remainingTime * -1).ToString("00.0")}ms behind! " +
-                                             $"({loopFps.ToString("0.0")} FPS)");
+                                             $"({currentFps.ToString("0.0")} FPS)");
                 }
+
+                /// Uncomment if you want to see the bitmaps update in real time.  A tool that can update the image at high rate is required.
+                /// Might throw "General GDI+ exception" because this code is just writing to the same file too fast.
+                //string bitmapSaveLocation = "D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\";
+                //scaledBitmap?.Save(bitmapSaveLocation + "scaled.jpg",   ImageFormat.Jpeg);
+                //screenBitmap?.Save(bitmapSaveLocation + "original.jpg", ImageFormat.Jpeg);
 
                 await Task.Delay((int)Math.Clamp(desiredFrametime - remainingTime, 10, desiredFrametime));
             } // loop end
 
         } // Main() end
 
-        [Obsolete]
-        private void UpdateStatus(string currentFps, Color[] avgCols, float remainingTime)
-        {
-            throw new Exception("Obsolete method. Also not compatible with WPF");
-
-            if (appQuitting == true)
-            {
-                return;
-            }
-
-            Console.SetWindowSize(85, 12);
-
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(0, 0);
-
-            float currentMs = 1000f / float.Parse(currentFps);
-
-            Console.Write($"\n--- Ambient keyboard v. {APP_VERSION} ------------------------------------------\n" +
-                          $" System time: {GetCurrentSystemTime()}                          \n" +
-                          $" Current FPS: {currentFps} ({currentMs.ToString("0.0")}ms)      \n" +
-                          $" Colours:     {GetZoneColoursString(avgCols)}                   \n" +
-                          $" Correction:  Saturation {colCorr_saturatiomMultiplier * 100f}% \n" +
-                          $"              Lightness  {colCorr_lightnessMultiplier * 100f}%  \n" +
-                          $"-----------------------------------------------------------------------" +
-                          $"\n Made by GhostMiner - https://Ghost-Miner.github.io/");
-
-            if (remainingTime <= -1f && remainingTime > -10f)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
-            else if (remainingTime <= -10f)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-        }
 
         private void CheckIfDataFolderExists()
         {
@@ -168,111 +160,6 @@ namespace Legion_keyboard_RGB
         {
             return DateTime.Now.ToString("HH:mm:ss");
         }
-
-        #region Mostly debug stuff - Log zone colours and save as images
-        private string GetZoneColoursString(Color[] _avgColours)
-        {
-            string zoneColours = $"1: {_avgColours[0].R} {_avgColours[0].G} {_avgColours[0].B} | " +
-                                 $"2: {_avgColours[1].R} {_avgColours[1].G} {_avgColours[1].B} | " +
-                                 $"3: {_avgColours[2].R} {_avgColours[2].G} {_avgColours[2].B} | " +
-                                 $"4: {_avgColours[3].R} {_avgColours[3].G} {_avgColours[3].B}";
-
-            return zoneColours;
-        }
-
-        Bitmap zone1Bitmap = new Bitmap(10, 10);
-        Bitmap zone2Bitmap = new Bitmap(10, 10);
-        Bitmap zone3Bitmap = new Bitmap(10, 10);
-        Bitmap zone4Bitmap = new Bitmap(10, 10);
-
-#if DEBUG
-        private void CreateAvgColBitmap(Color[] avgColor)
-        {
-            //System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-            //stopwatch.Start();
-
-            using (Graphics gfx = Graphics.FromImage(zone1Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(avgColor[0].R, avgColor[0].G, avgColor[0].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            using (Graphics gfx = Graphics.FromImage(zone2Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(avgColor[1].R, avgColor[1].G, avgColor[1].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            using (Graphics gfx = Graphics.FromImage(zone3Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(avgColor[2].R, avgColor[2].G, avgColor[2].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-            using (Graphics gfx = Graphics.FromImage(zone4Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(avgColor[3].R, avgColor[3].G, avgColor[3].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            try
-            {
-                zone1Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\avgCol1.jpg", ImageFormat.Png);
-                zone2Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\avgCol2.jpg", ImageFormat.Png);
-                zone3Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\avgCol3.jpg", ImageFormat.Png);
-                zone4Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\avgCol4.jpg", ImageFormat.Png);
-
-                scaledBitmap?.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\scaled.jpg", ImageFormat.Png);
-            }
-            catch (Exception ex)
-            {
-                MessageLogger.LogMessage($"[{GetCurrentSystemTime()}] [ERROR] {ex.Message}");
-            }
-        }
-#endif
-
-#if DEBUG
-        private void CreateCorrColBitmap(Color[] corrColour)
-        {
-            //System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-            //stopwatch.Start();
-
-            using (Graphics gfx = Graphics.FromImage(zone1Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(corrColour[0].R, corrColour[0].G, corrColour[0].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            using (Graphics gfx = Graphics.FromImage(zone2Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(corrColour[1].R, corrColour[1].G, corrColour[1].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            using (Graphics gfx = Graphics.FromImage(zone3Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(corrColour[2].R, corrColour[2].G, corrColour[2].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-            using (Graphics gfx = Graphics.FromImage(zone4Bitmap))
-            using (SolidBrush brush = new SolidBrush(Color.FromArgb(corrColour[3].R, corrColour[3].G, corrColour[3].B)))
-            {
-                gfx.FillRectangle(brush, 0, 0, 10, 10);
-            }
-
-            try
-            {
-                zone1Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\corrCol1.jpg", ImageFormat.Png);
-                zone2Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\corrCol2.jpg", ImageFormat.Png);
-                zone3Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\corrCol3.jpg", ImageFormat.Png);
-                zone4Bitmap.Save("D:\\Uzivatel\\Admin\\Dokumenty\\GitHub\\Ghost-Miner.github.io\\kbTest\\corrCol4.jpg", ImageFormat.Png);
-            }
-            catch (Exception ex)
-            {
-                MessageLogger.LogMessage($"[{GetCurrentSystemTime()}] [ERROR] {ex.Message}");
-            }
-        }
-#endif
-        #endregion
 
         #region Init stuff
         private void CheckLaunchArguments(string[] _launchArgs)
@@ -320,12 +207,6 @@ namespace Legion_keyboard_RGB
 
         private void InitApp()
         {
-            //AppDomain.CurrentDomain.ProcessExit += AppDomain_ProcessExit;
-
-            //Console.CursorVisible = false; 
-            //Console.ForegroundColor = ConsoleColor.White;
-            //Console.WriteLine("Starting...");
-
             CheckIfDataFolderExists();
             InitializeGraphicsObjects();
 
@@ -335,48 +216,22 @@ namespace Legion_keyboard_RGB
             BacklightDriver.SetKeyboardEffect(); // Set the effect to  
             BacklightDriver.SetBacklightBrightness(2); // Set brightness to high
             BacklightDriver.SetBacklightColour(Color.White, Color.White, Color.White, Color.White);
-
-            //Console.Clear();
-            //Console.WriteLine("Ready.");
-            //Console.WriteLine("Press any key to start.");
-            //Console.Read();
-
-            //Console.Clear();
         }
 
         private void InitializeGraphicsObjects()
         {
-            //screenBounds = Screen.PrimaryScreen.Bounds;
-            screenBounds = new Rectangle(0, 0, (int)SystemParameters.PrimaryScreenHeight, (int)SystemParameters.PrimaryScreenHeight);
+            screenBounds = new Rectangle(0, 0, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
 
-            screenBitmap = new Bitmap(screenBounds.Width, screenBounds.Height - (bottomMargin + topMargin)); // Subtract titlebar and taskbar height px
+            screenBitmap = new Bitmap(screenBounds.Width, screenBounds.Height - (bottomMargin + topMargin));
             scaledBitmap = new Bitmap(downscaleSize.Width, downscaleSize.Height);
 
             screenGraphics = Graphics.FromImage(screenBitmap);
             scaledGraphics = Graphics.FromImage(scaledBitmap);
 
             scaledGraphics.PixelOffsetMode = PixelOffsetMode.Half;
-            scaledGraphics.InterpolationMode = InterpolationMode.Bicubic;
+            scaledGraphics.InterpolationMode = InterpolationMode.Low;
             scaledGraphics.CompositingMode = CompositingMode.SourceCopy;
         }
-        #endregion
-
-        #region App shutdown stuff
-        //private  void AppDomain_ProcessExit(object? sender, EventArgs e)
-        //{
-        //    PerformAppCleanup();
-        //}
-
-        //private  void PerformAppCleanup()
-        //{
-        //    appQuitting = true;
-        //    Console.Clear();
-
-        //    Console.SetCursorPosition(1, 1);
-        //    Console.WriteLine("Cleaning up...");
-
-        //    MessageLogger.AppQuit();
-        //}
         #endregion
     }
 }
