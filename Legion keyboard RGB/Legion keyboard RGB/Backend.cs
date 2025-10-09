@@ -11,20 +11,12 @@ namespace Legion_keyboard_RGB
     {
         public static Backend Instance = new Backend();
 
-        private const string APP_VERSION = "0.1";
-
-        private const string L_ARG_FPS_OVERRIDE = "fps";
-        private const string L_ARG_LOG_WARNINGS = "logwarns";
-        private const string L_ARG_COL_CORR_LIGHTNESS = "light";
-        private const string L_ARG_COL_CORR_SATURATION = "sat";
-
-        private bool logWarnings = false;
-
+        private bool   logWarnings = false;
         private string dataFolderPath = Environment.GetEnvironmentVariable("appdata") + "/GhostMiner/Ambient KB/";
         private string outputLogFileNane = "output.log";
 
-        private Bitmap? screenBitmap;
-        private Bitmap? scaledBitmap;
+        private Bitmap?   screenBitmap;
+        private Bitmap?   scaledBitmap;
         private Graphics? screenGraphics;
         private Graphics? scaledGraphics;
         private Rectangle screenBounds;
@@ -32,7 +24,7 @@ namespace Legion_keyboard_RGB
         private Color[] averageColours;
         private Color[] correctedColours;
 
-        private System.Drawing.Size downscaleSize = new System.Drawing.Size(64, 32);
+        private System.Drawing.Size downscaleSize = new System.Drawing.Size(64, 36); // FullHD gets scaled down 30x
         private int bottomMargin  = 40; // Taskbar height
         private int topMargin     = 30; // Titlebar height
 
@@ -47,41 +39,34 @@ namespace Legion_keyboard_RGB
         private float colCorr_lightnessMultiplier = 1f;
         private float currentMs = 00f;
 
-        public void Initialize(string[] args)
+        public void Initialize()
         {
-            CheckLaunchArguments(args);
             InitApp();
 
-            MainWindow.Instance.PropertyChanged += MainWindow_PropertyChanged;
+            MainWindow.Instance.PropertyChanged      += MainWindow_PropertyChanged;
+            MainWindow.Instance.OnInputfieldsChanged += Instance_OnInputfieldsChanged;
+        }
+
+        private void Instance_OnInputfieldsChanged(object? sender, MainWindow.OnInputfieldsChangedEventArgs e)
+        {
+            float _satMultiplier   = colCorr_saturatiomMultiplier * 100;
+            float _lightMultiplier = colCorr_lightnessMultiplier  * 100;
+            int   _bottomMargin    = bottomMargin; 
+            int   _topMargin       = topMargin;
+            float _frameTime       = desiredFrametime;
+
+            try { _satMultiplier   = float.Parse(e.saturationfieldValue);   }  catch (Exception) { _satMultiplier   = 100f; }
+            try { _lightMultiplier = float.Parse(e.lightnessFieldValue);    }  catch (Exception) { _lightMultiplier = 100f; }
+            try { _topMargin       = int  .Parse(e.topMarginFieldValue);    }  catch (Exception) { _topMargin       = 40;   }
+            try { _bottomMargin    = int  .Parse(e.bottomMarginFieldValue); }  catch (Exception) { _bottomMargin    = 30;   }
+            try { _frameTime       = float.Parse(e.freamerateFieldValue);   }  catch (Exception) { _frameTime       = 50f;  }
+
+            UpdateOverrideValues(_satMultiplier / 100, _lightMultiplier / 100, _topMargin,_bottomMargin, _frameTime);
         }
 
         private void MainWindow_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             UpdateValuesForUI();
-            MessageBox.Show(e.PropertyName, "test");
-        }
-
-        private void UpdateValuesForUI()
-        {
-            //MainWindow.Instance.UpdateUI(GetCurrentSystemTime(), (int)execTimeFPS, currentMs, averageColours, remainingTime, correctedColours,
-            //                                colCorr_saturatiomMultiplier, colCorr_lightnessMultiplier, topMargin, bottomMargin, (int)desiredFrametime);
-
-            MainWindow.Instance.UpdateUI(new MainWindow.UIValues
-            {
-                averageColours = averageColours,
-                correctedColours = correctedColours,
-
-                bottomMargin = bottomMargin,
-                topMargin = topMargin,
-                
-                currentFramerate = currentFps,
-                currentFrameTime = (1000 / currentFps), // 1 000ms 
-                currentTime = GetCurrentSystemTime(),
-                desiredFramerate = (1000 / desiredFrametime), // 1 000ms
-
-                lightnessMultiplier = colCorr_lightnessMultiplier,
-                saturationMultiplier = colCorr_saturatiomMultiplier,
-            });
         }
 
         internal async Task MainFunction()
@@ -142,11 +127,44 @@ namespace Legion_keyboard_RGB
                 //scaledBitmap?.Save(bitmapSaveLocation + "scaled.jpg",   ImageFormat.Jpeg);
                 //screenBitmap?.Save(bitmapSaveLocation + "original.jpg", ImageFormat.Jpeg);
 
-                await Task.Delay((int)Math.Clamp(desiredFrametime - remainingTime, 10, desiredFrametime));
+                await Task.Delay((int)Math.Clamp(desiredFrametime - remainingTime, 1, desiredFrametime));
             } // loop end
 
         } // Main() end
 
+
+        private void UpdateValuesForUI()
+        {
+            MainWindow.Instance.UpdateUI(new MainWindow.UIValues
+            {
+                averageColours = averageColours,
+                correctedColours = correctedColours,
+
+                bottomMargin = bottomMargin,
+                topMargin = topMargin,
+
+                currentFramerate = currentFps,
+                currentFrameTime = (1000 / currentFps), // 1 000 ms 
+                currentTime = GetCurrentSystemTime(),
+                desiredFramerate = (1000 / desiredFrametime), // 1 000 ms
+
+                lightnessMultiplier = colCorr_lightnessMultiplier,
+                saturationMultiplier = colCorr_saturatiomMultiplier,
+            });
+        }
+
+        private void UpdateOverrideValues(float _satMmultiploer, float _lightMultiplier, int _topMargin, int _botttomMargin, float _fps)
+        {
+            if (_fps < 1f)
+            {
+                _fps = 1f;
+            }
+            colCorr_saturatiomMultiplier = _satMmultiploer;
+            colCorr_lightnessMultiplier = _lightMultiplier;
+            topMargin = _topMargin;
+            bottomMargin = _botttomMargin;
+            desiredFrametime = 1000 / _fps;
+        }
 
         private void CheckIfDataFolderExists()
         {
@@ -162,49 +180,6 @@ namespace Legion_keyboard_RGB
         }
 
         #region Init stuff
-        private void CheckLaunchArguments(string[] _launchArgs)
-        {
-            if (_launchArgs.Length > 0)
-            {
-                foreach (string arg in _launchArgs)
-                {
-                    string[] argumentParts = arg.Split("=");
-                    string argumentName = argumentParts[0];
-                    string argumentValueStr = "";
-                    float argumentValueFloat = 1f;
-
-                    if (argumentParts.Length > 1)
-                    {
-                        argumentValueStr = argumentParts[1];
-                    }
-
-                    if (float.TryParse(argumentValueStr, out float result))
-                    {
-                        argumentValueFloat = result;
-                    }
-
-                    switch (argumentName)
-                    {
-                        case L_ARG_LOG_WARNINGS:
-                            logWarnings = true;
-                            break;
-
-                        case L_ARG_COL_CORR_SATURATION:
-                            colCorr_saturatiomMultiplier = Math.Clamp(argumentValueFloat, 0.1f, 10f);
-                            break;
-
-                        case L_ARG_COL_CORR_LIGHTNESS:
-                            colCorr_lightnessMultiplier = Math.Clamp(argumentValueFloat, 0.1f, 10f);
-                            break;
-
-                        case L_ARG_FPS_OVERRIDE:
-                            desiredFrametime = 1000 / Math.Clamp(argumentValueFloat, 1f, 100f);
-                            break;
-                    }
-                }
-            }
-        }
-
         private void InitApp()
         {
             CheckIfDataFolderExists();

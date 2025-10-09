@@ -1,0 +1,27 @@
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Legion keyboard RGB.exe
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\legion_rgb_driver.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Legion keyboard RGB.deps.json
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Legion keyboard RGB.runtimeconfig.json
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Legion keyboard RGB.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Legion keyboard RGB.pdb
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\Microsoft.Win32.SystemEvents.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\System.Drawing.Common.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\System.Private.Windows.Core.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\bin\x64\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.csproj.AssemblyReference.cache
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\MainWindow.g.cs
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\App.g.cs
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB_MarkupCompile.cache
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB_MarkupCompile.lref
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\MainWindow.baml
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.g.resources
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.AssemblyInfoInputs.cache
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.AssemblyInfo.cs
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.csproj.CoreCompileInputs.cache
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion k.B0244726.Up2Date
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\refint\Legion keyboard RGB.dll
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.pdb
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\Legion keyboard RGB.genruntimeconfig.cache
+D:\Uzivatel\Admin\Dokumenty\Visual Studio 2022\Projects\Legion keyboard RGB\Legion keyboard RGB\obj\x64\Debug\net8.0-windows\ref\Legion keyboard RGB.dll
