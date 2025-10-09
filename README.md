@@ -1,5 +1,4 @@
 # Legion keyboard RGB
-### Current version: 0.1.0
 
 ### Mirrors the content on the screen with an option to apply colour correction 
 
