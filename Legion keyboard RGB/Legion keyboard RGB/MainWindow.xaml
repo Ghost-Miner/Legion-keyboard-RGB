@@ -1,0 +1,107 @@
+﻿<Window x:Class="Legion_keyboard_RGB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Legion_keyboard_RGB"
+        mc:Ignorable="d"
+        
+        Title="Ambient Keyboard | v.0.9" 
+        Height="580 " 
+        Width="350"
+        ResizeMode="CanMinimize">
+    
+    <Grid Margin="10,5,10,10">        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="165"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <!-- STATUS TEXTS -->
+        <Grid Grid.Row="0" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical">
+                    <TextBlock Name="systemTimeText"  Text="Time: *time*" FontSize="16" FontWeight="Medium"/>
+                    <TextBlock Name="refreshRateText" Text="FPS: *fps* (*ms*)" FontSize="16" FontWeight="Medium"/>
+                </StackPanel>
+                
+                <Separator/>
+                <TextBlock Name="statusTextDisplay" Text="*staus" FontSize="16" HorizontalAlignment="Center"/>
+
+                <!-- Thick splitter -->
+                <Rectangle Fill="Black" Height="2" Margin="0,15,0,15"/>
+            </StackPanel>
+        </Grid>
+        
+        
+
+        <Grid Grid.Row="1" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- INPUT FIELDS -->
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+                <TextBlock Name="overridesTitle" FontSize="16" Text="Customize" FontWeight="Medium"/>
+                <Separator Margin="0,5,0,5"/>
+
+                <TextBlock Name="saturationTitle" Text="Saturation (%)" FontSize="16" Margin="2,2,10,2" HorizontalAlignment="Right" />
+                <TextBlock Name="lightnessTitle"  Text="Lightness (%)"  FontSize="16" Margin="2,2,10,2" HorizontalAlignment="Right"/>
+
+                <TextBlock Name="topMarginTitle"    Text="Top margin (px)"    FontSize="16" Margin="2,2,10,2" HorizontalAlignment="Right"/>
+                <TextBlock Name="bottomMarginTitle" Text="Bottom margin (px)" FontSize="16" Margin="2,2,10,2" HorizontalAlignment="Right"/>
+                <TextBlock Name="fpsTitle"          Text="Update rate (FPS)" FontSize="16" Margin="2,2,10,2" HorizontalAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
+                <TextBox Name="spacer" Background="Transparent" BorderBrush="Transparent" Foreground="Wheat"/>
+                <Separator Margin="0,4,0,5"/>
+
+                <TextBox Name="saturationValueField" Text="{Binding SaturationfieldValue, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+                <TextBox Name="lightnessValueField"  Text="{Binding LightnessFieldValue,  UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+
+                <TextBox Name="topMarginvalueField"    Text="{Binding TopMarginFieldValue,    UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+                <TextBox Name="bottomMarginvalueField" Text="{Binding BottomMarginFieldValue, UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+                <TextBox Name="fpsValueField"          Text="{Binding FPSFieldValue,          UpdateSourceTrigger=PropertyChanged}" Margin="2"/>
+            </StackPanel>
+        </Grid>
+
+
+        <!-- COLOR SQUARES -->
+        <Grid Grid.Row="2" VerticalAlignment="Top">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                <!-- Thick splitter -->
+                <Rectangle Fill="Black" Height="2" Margin="0,15,0,15"/>
+                
+                <TextBlock Text="Raw colours" FontSize="16" FontWeight="Medium"/>
+                <Separator/>
+
+                <Border BorderBrush="Black" Background="Black" BorderThickness="1">
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Rectangle Name="avgColour_1" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_2" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_3" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="avgColour_4" Width="64" Height="64" Fill="Black" Margin="1" />
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="With colour correction" FontSize="16" FontWeight="Medium" Margin="0,10,0,0"/>
+                <Separator/>
+
+                <Border BorderBrush="Black" Background="Black" BorderThickness="1">
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Rectangle Name="correctedColour_1" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_2" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_3" Width="64" Height="64" Fill="Black" Margin="1" />
+                        <Rectangle Name="correctedColour_4" Width="64" Height="64" Fill="Black" Margin="1" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+                
+        </Grid>
+
+    </Grid> <!-- MASTER GRID -->
+</Window>
