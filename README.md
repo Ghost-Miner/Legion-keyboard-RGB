@@ -31,4 +31,4 @@ _\*\*The current implementation of capturing the screen doesn't allow update rat
 
 ---
 ### Current appearance:
-<img width="789" height="336" alt="lenovo kb ambient" src="https://github.com/user-attachments/assets/865fb08f-89eb-4ef1-83af-c9c8abae4800" />
+<img width="371" height="605" alt="obrazek" src="https://github.com/user-attachments/assets/741e332b-729d-4904-9805-8712975df7eb" />
