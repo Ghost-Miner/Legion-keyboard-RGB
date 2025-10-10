@@ -6,4 +6,5 @@
 
 ---
 ### Current appearance:
-<img width="371" height="605" alt="obrazek" src="https://github.com/user-attachments/assets/741e332b-729d-4904-9805-8712975df7eb" />
+<img width="365" height="603" alt="obrazek" src="https://github.com/user-attachments/assets/cc94c8e9-09e9-48f9-bb04-344ce9418b4a" />
+
