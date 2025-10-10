@@ -4,7 +4,5 @@
 
 **Code for controlling the backlight is from [4JX/L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB)** /driver/src directory. Compiled into a DLL for an easy acces from C#.
 
----
-### Current appearance:
 <img width="365" height="603" alt="obrazek" src="https://github.com/user-attachments/assets/cc94c8e9-09e9-48f9-bb04-344ce9418b4a" />
 
