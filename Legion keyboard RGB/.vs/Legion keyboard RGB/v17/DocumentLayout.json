@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|solutionrelative:legion keyboard rgb\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|d:\\uzivatel\\admin\\dokumenty\\visual studio 2022\\projects\\legion keyboard rgb\\legion keyboard rgb\\legion keyboard rgb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|solutionrelative:legion keyboard rgb\\legion keyboard rgb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|d:\\uzivatel\\admin\\dokumenty\\visual studio 2022\\projects\\legion keyboard rgb\\legion keyboard rgb\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|solutionrelative:legion keyboard rgb\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|d:\\uzivatel\\admin\\dokumenty\\visual studio 2022\\projects\\legion keyboard rgb\\legion keyboard rgb\\backend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|solutionrelative:legion keyboard rgb\\backend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|d:\\uzivatel\\admin\\dokumenty\\visual studio 2022\\projects\\legion keyboard rgb\\legion keyboard rgb\\tools\\appdatamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9704C2D4-2FF0-4EB8-94D5-1EC21F4B8709}|Legion keyboard RGB\\Legion keyboard RGB.csproj|solutionrelative:legion keyboard rgb\\tools\\appdatamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Legion keyboard RGB\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\MainWindow.xaml.cs",
               "RelativeToolTip": "Legion keyboard RGB\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAkwKsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-19T16:10:05.162Z",
               "IsPinned": true,
@@ -57,16 +65,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Backend.cs",
               "DocumentMoniker": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\Backend.cs",
               "RelativeDocumentMoniker": "Legion keyboard RGB\\Backend.cs",
               "ToolTip": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\Backend.cs",
               "RelativeToolTip": "Legion keyboard RGB\\Backend.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAApwLYAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAiwMUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-19T16:36:50.91Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Legion keyboard RGB",
+              "DocumentMoniker": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\Legion keyboard RGB.csproj",
+              "RelativeDocumentMoniker": "Legion keyboard RGB\\Legion keyboard RGB.csproj",
+              "ToolTip": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\Legion keyboard RGB.csproj",
+              "RelativeToolTip": "Legion keyboard RGB\\Legion keyboard RGB.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-16T19:46:57.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppDataManager.cs",
+              "DocumentMoniker": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\tools\\AppDataManager.cs",
+              "RelativeDocumentMoniker": "Legion keyboard RGB\\tools\\AppDataManager.cs",
+              "ToolTip": "D:\\Uzivatel\\Admin\\Dokumenty\\Visual Studio 2022\\Projects\\Legion keyboard RGB\\Legion keyboard RGB\\tools\\AppDataManager.cs",
+              "RelativeToolTip": "Legion keyboard RGB\\tools\\AppDataManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T16:50:58.478Z",
               "EditorCaption": ""
             }
           ]

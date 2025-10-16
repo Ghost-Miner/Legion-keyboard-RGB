@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows;
 using System.IO;
+using Legion_keyboard_RGB.tools;
+using System.Windows.Input;
 
 namespace Legion_keyboard_RGB
 {
@@ -160,10 +162,11 @@ namespace Legion_keyboard_RGB
                 _fps = 1f;
             }
             colCorr_saturatiomMultiplier = _satMmultiploer;
-            colCorr_lightnessMultiplier = _lightMultiplier;
-            topMargin = _topMargin;
-            bottomMargin = _botttomMargin;
+            colCorr_lightnessMultiplier  = _lightMultiplier;
+            
             desiredFrametime = 1000 / _fps;
+            bottomMargin     = _botttomMargin;
+            topMargin        = _topMargin;
         }
 
         private void CheckIfDataFolderExists()
@@ -191,6 +194,8 @@ namespace Legion_keyboard_RGB
             BacklightDriver.SetKeyboardEffect(); // Set the effect to  
             BacklightDriver.SetBacklightBrightness(2); // Set brightness to high
             BacklightDriver.SetBacklightColour(Color.White, Color.White, Color.White, Color.White);
+
+            LoadSavedSettings();
         }
 
         private void InitializeGraphicsObjects()
@@ -206,6 +211,30 @@ namespace Legion_keyboard_RGB
             scaledGraphics.PixelOffsetMode = PixelOffsetMode.Half;
             scaledGraphics.InterpolationMode = InterpolationMode.Low;
             scaledGraphics.CompositingMode = CompositingMode.SourceCopy;
+        }
+
+        public void LoadSavedSettings()
+        {
+            if (AppDataManager.SettingsDataExists())
+            {
+                AppDataManager.SettingsDataClass settingsData = AppDataManager.GetSettingsData();
+
+                UpdateOverrideValues(settingsData._saturationValue, settingsData._lightnessValue, settingsData._topMargin, settingsData._bottomMargin, settingsData._desiredFrameRate);
+            }
+        }
+
+        public void SaveSettings()
+        {
+            AppDataManager.SettingsDataClass settingsData = new AppDataManager.SettingsDataClass()
+            {
+                _bottomMargin = bottomMargin,
+                _topMargin = topMargin,
+                _saturationValue = colCorr_saturatiomMultiplier,
+                _lightnessValue = colCorr_lightnessMultiplier,
+                _desiredFrameRate = (1000 / desiredFrametime),
+            };
+
+            AppDataManager.SaveSettingsData(settingsData);
         }
         #endregion
     }

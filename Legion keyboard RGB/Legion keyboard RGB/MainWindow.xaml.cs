@@ -105,11 +105,6 @@ namespace Legion_keyboard_RGB
                 saturationfieldValue   = saturationfieldValue,
                 freamerateFieldValue   = fpsFieldValue,
             });
-
-            //MessageBox.Show($"Saturation: \"{saturationfieldValue}\" \n " +
-            //                $"lightnessFieldValue: \"{lightnessFieldValue}\" \n" +
-            //                $"topMarginFieldValue: \"{topMarginFieldValue}\" \n" +
-            //                $"bottomMarginFieldValue: \"{bottomMarginFieldValue}\"");
         }
 
 
@@ -165,6 +160,16 @@ namespace Legion_keyboard_RGB
             public float bottomMargin;
 
             public int frameRate;
+        }
+
+        private void SaveSettingsbutton_Click(object sender, RoutedEventArgs e)
+        {
+            Backend.Instance.SaveSettings();
+        }
+
+        private void LoadSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Backend.Instance.LoadSavedSettings();
         }
     } // class end
 } // namespace end

@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
-      "Microsoft.Win32.SystemEvents/9.0.9": {
+      "Microsoft.Win32.SystemEvents/9.0.10": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
@@ -24,10 +24,10 @@
           }
         }
       },
-      "System.Drawing.Common/9.0.9": {
+      "System.Drawing.Common/9.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "9.0.9"
+          "Microsoft.Win32.SystemEvents": "9.0.10"
         },
         "compile": {
           "lib/net8.0/System.Drawing.Common.dll": {
@@ -52,10 +52,10 @@
     }
   },
   "libraries": {
-    "Microsoft.Win32.SystemEvents/9.0.9": {
-      "sha512": "eJU9vZbN710Cc25p/jPecPEL+gFcnynAvznNRnEvMU7i7u0PSjFXlGO4SOlaIUvkykTlS2N++M9B/coxYT7aPw==",
+    "Microsoft.Win32.SystemEvents/9.0.10": {
+      "sha512": "P1CEtsxar/RhfoH3r1vc9ra28LLVYphpcFBxyRIEMM/jP3qh4j9TU4sWH2RUhMZX+GbFxZ+zz1oSP2n9MwjshA==",
       "type": "package",
-      "path": "microsoft.win32.systemevents/9.0.9",
+      "path": "microsoft.win32.systemevents/9.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -75,7 +75,7 @@
         "lib/net9.0/Microsoft.Win32.SystemEvents.xml",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.9.0.9.nupkg.sha512",
+        "microsoft.win32.systemevents.9.0.10.nupkg.sha512",
         "microsoft.win32.systemevents.nuspec",
         "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.xml",
@@ -84,10 +84,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Drawing.Common/9.0.9": {
-      "sha512": "BS17VFUf4RS9G/JoA6br+79jAjyTj0UaomgXCVNJJn9EWIvmHkn0ZCqAynxwloO00yPIvWgXBF9SBjcM06bl1w==",
+    "System.Drawing.Common/9.0.10": {
+      "sha512": "FDakPhIcxHnhslLiz4ZQ+ALpHRpCU3zOep9Mcq+4hL23XwQrzmgJNYvf1tH4kJ/V36wO/ZhRr8nOfiz26P3wKg==",
       "type": "package",
-      "path": "system.drawing.common/9.0.9",
+      "path": "system.drawing.common/9.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -121,7 +121,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.drawing.common.9.0.9.nupkg.sha512",
+        "system.drawing.common.9.0.10.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -129,7 +129,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "System.Drawing.Common >= 9.0.9"
+      "System.Drawing.Common >= 9.0.10"
     ]
   },
   "packageFolders": {
@@ -184,7 +184,7 @@
         "dependencies": {
           "System.Drawing.Common": {
             "target": "Package",
-            "version": "[9.0.9, )"
+            "version": "[9.0.10, )"
           }
         },
         "imports": [
