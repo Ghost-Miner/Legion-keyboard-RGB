@@ -7,7 +7,7 @@
 Bottom and top margin is intended for excluding mostly static elements like the taskbar and window titlebar from influencing the final colour
 
 ---
-### **This app requires a Lenovo Loq or Legion serties laptop!** 
+### **This app requires a Lenovo Loq or Legion series laptop!** 
 
 **See [4JX/L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) for detailed information on supported models.**
 
